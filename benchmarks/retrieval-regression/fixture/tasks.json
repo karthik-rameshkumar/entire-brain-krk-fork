@@ -1,0 +1,223 @@
+[
+  {
+    "id": "brief-order",
+    "task": "does the brief command emit facts and history before or after the status block",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:85d9e9e17ca0cf8a1f048d2d"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "brief-truncation",
+    "task": "why do agents miss evidence when the brief status block is large",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:a25a61a0b738cb36838fce3b",
+      "fact:85d9e9e17ca0cf8a1f048d2d"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "guide-recall-vs-query",
+    "task": "which command should the agent guide name for retrieving prior decisions, recall or query",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:5afb71debd4e7e845d15cccd"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "query-expansion",
+    "task": "was query expansion ever made the default and why not",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:f34cc561fb669f6e31fb54b4"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "default-ranker",
+    "task": "what replaced substring matching as the default history ranker",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:547165fcf1750190c083bc1a"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "model2vec",
+    "task": "did Model2Vec fusion on history ship",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:3c70a99e4c55c61577e9c996"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "rrf-tuning",
+    "task": "what reciprocal rank fusion weights and k0 are used and were they tuned",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:9143b941036e9bc2246266a7"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "locus-scoping",
+    "task": "why did locus-scoped retrieval ship and is the outline a ranker",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:30fd77b7d4b7067b3946eccf"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "scoped-floor",
+    "task": "what happened to the scoped-floor retrieval arm built from backfilled facts",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:8ed8910c16a9f8456e337547"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "branch-scope",
+    "task": "why does recall on a feature branch return no facts",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:ec023e2cf0220c87d703f3fa"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "fact-id",
+    "task": "how is a fact id derived and is it stable across stores",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:d60aaa18d3400491b0290834"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "promote-on-merge",
+    "task": "when a feature branch merges, how are its active memories carried into the target branch",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:4af719604c2c48a4eb6cf480"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "canonical-derived",
+    "task": "which brain data may be rebuilt and which may not be regenerated",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:3df80a46f6f8adb134630ee1"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "write-lock",
+    "task": "how are concurrent distill writes kept from interleaving in the fact store",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:5350047919e7f31f412c9d8a"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "distill-salt",
+    "task": "what goes into the distill cache key and what broke when it was reduced",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:38ef91ad7fee73352325c751"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "mcp-scope",
+    "task": "can an MCP tool call read a path outside the bound repository root",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:3da4217a33ec8a36304d3299"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "mcp-blocking",
+    "task": "why does one slow provider call stall every later MCP tool call",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:ac6a8efb0abf0c512d78fdb1"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "claim-policy",
+    "task": "how many runs per side does a citable benchmark result need",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:f7023e5ce59a7a447c043380"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "placebo-arm",
+    "task": "what arms does a confirmatory benchmark compare and what differs between them",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:90ae3e359e404966e57f3f4f"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "demo-contamination",
+    "task": "why must a memory ladder demo question avoid anything discussed in recent sessions",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:14e1e19a7112231a299c1522"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "semantic-removal",
+    "task": "why was the embedder removed from the binary",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:1218039140c5cc34a32a831a"
+    ],
+    "label_source": "human"
+  },
+  {
+    "id": "export-filter",
+    "task": "what does checkpoint export strip before a transcript leaves the machine",
+    "branch": "main",
+    "k": 5,
+    "relevant": [
+      "fact:33123406d8f810aac1ff7bf4"
+    ],
+    "label_source": "human"
+  }
+]

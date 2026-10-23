@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "origin": "https://github.com/entireio/brain-retrieval-fixture",
+  "branch": "main",
+  "note": "Synthetic durable memories for the retrieval regression probe. Topics mirror public Brain design notes but the wording is fixture-only; nothing here is a product claim. Near-duplicate entries are deliberate distractors so ranking, not just presence, is measured.",
+  "facts": [
+    {
+      "key": "brief-order",
+      "path": "architecture.cli.brief",
+      "kind": "decision",
+      "text": "The brief command emits facts and history before the status block so agents that truncate long packets still see the evidence first."
+    },
+    {
+      "key": "brief-status-size",
+      "path": "architecture.cli.brief",
+      "kind": "gotcha",
+      "text": "A brief status block that grows past about ten kilobytes crowds out evidence; keep status after facts and history and trim it to counts."
+    },
+    {
+      "key": "brief-recall-name",
+      "path": "architecture.cli.brief",
+      "kind": "convention",
+      "text": "Agent guides name recall, not query, as the command for prior decisions because query ranks docs and facts together."
+    },
+    {
+      "key": "query-expansion-optin",
+      "path": "project.evaluation.retrieval",
+      "kind": "decision",
+      "text": "Query expansion stays opt-in: an early effect of d 0.47 at n 8 collapsed to d 0.10 with p 0.26 at n 121."
+    },
+    {
+      "key": "bm25-default",
+      "path": "architecture.retrieval.ranking",
+      "kind": "decision",
+      "text": "BM25 over tokenized history replaced substring matching as the default ranker after a 2.7x to 5.1x useful-per-1k gain across strata."
+    },
+    {
+      "key": "model2vec-rejected",
+      "path": "project.evaluation.retrieval",
+      "kind": "decision",
+      "text": "Model2Vec fusion on history was dropped: precision was significantly worse than BM25 at production scale and the small-repo gain was noise."
+    },
+    {
+      "key": "rrf-weights",
+      "path": "architecture.retrieval.ranking",
+      "kind": "decision",
+      "text": "Reciprocal rank fusion keeps equal weights and k0 of 60; a weight sweep put every cell inside noise."
+    },
+    {
+      "key": "locus-scoped",
+      "path": "architecture.retrieval.scoping",
+      "kind": "decision",
+      "text": "Locus-scoped fact retrieval shipped because it cut 112 tokens per query with a recall cost of 0.029; the outline stays a map, not a ranker."
+    },
+    {
+      "key": "scoped-floor-dead",
+      "path": "architecture.retrieval.scoping",
+      "kind": "decision",
+      "text": "A scoped-floor arm built from backfilled facts was a dead end and must not be revived without a new task set."
+    },
+    {
+      "key": "facts-branch-scope",
+      "path": "architecture.facts.identity",
+      "kind": "invariant",
+      "text": "Durable facts are scoped to a branch; recall and brief on a feature branch see no main-branch facts unless --branch main is passed."
+    },
+    {
+      "key": "facts-content-id",
+      "path": "architecture.facts.identity",
+      "kind": "invariant",
+      "text": "A fact id is derived from its content, so the same memory recorded in two fresh stores receives the same id."
+    },
+    {
+      "key": "facts-promote",
+      "path": "architecture.facts.lifecycle",
+      "kind": "convention",
+      "text": "When a feature branch merges, memories promote carries its active facts into the target branch instead of re-recording them."
+    },
+    {
+      "key": "canonical-vs-derived",
+      "path": "architecture.storage.boundaries",
+      "kind": "invariant",
+      "text": "Canonical facts and manifests stay separate from derived SQLite and FTS caches; a derived cache may be rebuilt, canonical data may not be regenerated."
+    },
+    {
+      "key": "write-lock",
+      "path": "architecture.storage.boundaries",
+      "kind": "invariant",
+      "text": "Every fact store write takes the brain write lock and publishes atomically so a concurrent distill cannot interleave half-written records."
+    },
+    {
+      "key": "distill-cache-salt",
+      "path": "architecture.distill.cache",
+      "kind": "gotcha",
+      "text": "The distill cache key is salted with agent, model and effort; dropping the salt made runs with different judges share stale verdicts."
+    },
+    {
+      "key": "distill-quality-gate",
+      "path": "architecture.distill.quality",
+      "kind": "decision",
+      "text": "Batch distill admits a fact only above a strict quality gate rather than capturing every turn, so the fact layer stays small and precise."
+    },
+    {
+      "key": "mcp-repo-scope",
+      "path": "architecture.mcp.scope",
+      "kind": "invariant",
+      "text": "MCP tool calls resolve relative paths inside the bound repository root and refuse cross-repository reads unless ENTIRE_BRAIN_MCP_ALLOW_ANY_PATH is set."
+    },
+    {
+      "key": "mcp-sequential",
+      "path": "architecture.mcp.scope",
+      "kind": "gotcha",
+      "text": "The MCP server handles tool calls sequentially, so one unbounded provider call blocks every later call until its deadline fires."
+    },
+    {
+      "key": "benchmark-no-claim",
+      "path": "project.evaluation.policy",
+      "kind": "decision",
+      "text": "Retained benchmark evidence defaults to no_release_claim; a citable result needs at least four runs per side against current task definitions and must survive drop-one."
+    },
+    {
+      "key": "benchmark-placebo",
+      "path": "project.evaluation.policy",
+      "kind": "convention",
+      "text": "Confirmatory arms compare no_memory, placebo_packet and retrieved_memory with an identical instruction that differs only inside the frozen packet."
+    },
+    {
+      "key": "memory-ladder",
+      "path": "project.evaluation.demo",
+      "kind": "decision",
+      "text": "The memory ladder demo question must have a rationale that lives only in session history, because Brain ingests live sessions and anything discussed today contaminates tomorrow."
+    },
+    {
+      "key": "semantic-removed",
+      "path": "architecture.retrieval.ranking",
+      "kind": "decision",
+      "text": "Semantic retrieval and the embedder type were removed after an in-process lexical ranker matched the embedder stack on recall while cutting agent tokens 18 to 28 percent and 31 megabytes off every binary."
+    },
+    {
+      "key": "export-privacy",
+      "path": "constraints.privacy.export",
+      "kind": "invariant",
+      "text": "Checkpoint export filters ignored and private paths before any transcript leaves the machine; a disclosure cannot be recalled."
+    },
+    {
+      "key": "hook-swallow",
+      "path": "workflow.benchmarks.isolation",
+      "kind": "gotcha",
+      "text": "Benchmark clones run with lifecycle hooks swallowed so a nested agent run never captures a checkpoint into the real repository."
+    }
+  ]
+}

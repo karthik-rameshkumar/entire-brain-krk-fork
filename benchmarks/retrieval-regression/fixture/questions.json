@@ -1,0 +1,134 @@
+[
+  {
+    "id": "brief-order",
+    "task": "does the brief command emit facts and history before or after the status block",
+    "k": 5,
+    "relevant_keys": ["brief-order"]
+  },
+  {
+    "id": "brief-truncation",
+    "task": "why do agents miss evidence when the brief status block is large",
+    "k": 5,
+    "relevant_keys": ["brief-status-size", "brief-order"]
+  },
+  {
+    "id": "guide-recall-vs-query",
+    "task": "which command should the agent guide name for retrieving prior decisions, recall or query",
+    "k": 5,
+    "relevant_keys": ["brief-recall-name"]
+  },
+  {
+    "id": "query-expansion",
+    "task": "was query expansion ever made the default and why not",
+    "k": 5,
+    "relevant_keys": ["query-expansion-optin"]
+  },
+  {
+    "id": "default-ranker",
+    "task": "what replaced substring matching as the default history ranker",
+    "k": 5,
+    "relevant_keys": ["bm25-default"]
+  },
+  {
+    "id": "model2vec",
+    "task": "did Model2Vec fusion on history ship",
+    "k": 5,
+    "relevant_keys": ["model2vec-rejected"]
+  },
+  {
+    "id": "rrf-tuning",
+    "task": "what reciprocal rank fusion weights and k0 are used and were they tuned",
+    "k": 5,
+    "relevant_keys": ["rrf-weights"]
+  },
+  {
+    "id": "locus-scoping",
+    "task": "why did locus-scoped retrieval ship and is the outline a ranker",
+    "k": 5,
+    "relevant_keys": ["locus-scoped"]
+  },
+  {
+    "id": "scoped-floor",
+    "task": "what happened to the scoped-floor retrieval arm built from backfilled facts",
+    "k": 5,
+    "relevant_keys": ["scoped-floor-dead"]
+  },
+  {
+    "id": "branch-scope",
+    "task": "why does recall on a feature branch return no facts",
+    "k": 5,
+    "relevant_keys": ["facts-branch-scope"]
+  },
+  {
+    "id": "fact-id",
+    "task": "how is a fact id derived and is it stable across stores",
+    "k": 5,
+    "relevant_keys": ["facts-content-id"]
+  },
+  {
+    "id": "promote-on-merge",
+    "task": "when a feature branch merges, how are its active memories carried into the target branch",
+    "k": 5,
+    "relevant_keys": ["facts-promote"]
+  },
+  {
+    "id": "canonical-derived",
+    "task": "which brain data may be rebuilt and which may not be regenerated",
+    "k": 5,
+    "relevant_keys": ["canonical-vs-derived"]
+  },
+  {
+    "id": "write-lock",
+    "task": "how are concurrent distill writes kept from interleaving in the fact store",
+    "k": 5,
+    "relevant_keys": ["write-lock"]
+  },
+  {
+    "id": "distill-salt",
+    "task": "what goes into the distill cache key and what broke when it was reduced",
+    "k": 5,
+    "relevant_keys": ["distill-cache-salt"]
+  },
+  {
+    "id": "mcp-scope",
+    "task": "can an MCP tool call read a path outside the bound repository root",
+    "k": 5,
+    "relevant_keys": ["mcp-repo-scope"]
+  },
+  {
+    "id": "mcp-blocking",
+    "task": "why does one slow provider call stall every later MCP tool call",
+    "k": 5,
+    "relevant_keys": ["mcp-sequential"]
+  },
+  {
+    "id": "claim-policy",
+    "task": "how many runs per side does a citable benchmark result need",
+    "k": 5,
+    "relevant_keys": ["benchmark-no-claim"]
+  },
+  {
+    "id": "placebo-arm",
+    "task": "what arms does a confirmatory benchmark compare and what differs between them",
+    "k": 5,
+    "relevant_keys": ["benchmark-placebo"]
+  },
+  {
+    "id": "demo-contamination",
+    "task": "why must a memory ladder demo question avoid anything discussed in recent sessions",
+    "k": 5,
+    "relevant_keys": ["memory-ladder"]
+  },
+  {
+    "id": "semantic-removal",
+    "task": "why was the embedder removed from the binary",
+    "k": 5,
+    "relevant_keys": ["semantic-removed"]
+  },
+  {
+    "id": "export-filter",
+    "task": "what does checkpoint export strip before a transcript leaves the machine",
+    "k": 5,
+    "relevant_keys": ["export-privacy"]
+  }
+]

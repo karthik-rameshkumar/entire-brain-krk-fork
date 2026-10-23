@@ -45,11 +45,12 @@ description = "Run deterministic Phase 1 semantic brain contract tests"
 run = "ENTIRE_BRAIN_PHASE1_CI=1 go test -race ./internal/cli -run 'TestPhase1|TestSemantic|TestWorkspace|TestMCP|TestRefreshSemantic'"
 
 [tasks."test:benchmarks"]
-description = "Run the agent-brain and memory-ladder benchmark harness test suites"
+description = "Run the agent-brain, memory-ladder and retrieval-regression benchmark harness test suites"
 run = '''
 set -e
 python3 benchmarks/agent-brain/ci_tests.py
 python3 -B -m unittest discover -s benchmarks/memory-ladder -p 'test_*.py'
+python3 -B -m unittest discover -s benchmarks/retrieval-regression -p 'test_*.py'
 '''
 
 [tasks."release:evidence"]
