@@ -1,7 +1,7 @@
 {
   "id": "trail-summary",
   "display_name": "Trail Summary",
-  "enabled": true,
+  "enabled": false,
   "scope": "trail",
   "runtime": {
     "kind": "prompt_runner",

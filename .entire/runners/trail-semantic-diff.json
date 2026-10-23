@@ -1,7 +1,7 @@
 {
   "id": "trail-semantic-diff",
   "display_name": "Brain Semantic Diff",
-  "enabled": true,
+  "enabled": false,
   "scope": "trail",
   "runtime": {
     "kind": "prompt_runner",
